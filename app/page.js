@@ -1,10 +1,13 @@
 import Cabecalho from "@/components/Cabecalho";
+import ListaDeTarefas from "@/components/ListaDeTarefas";
 
-export default function home(){
+export default function Home() {
   return (
     <>
-    <Cabecalho titulo="To Do list" subtitulo="aula 23"/>
-    <main>shits crazy</main>
+      <Cabecalho titulo="To do List" subtitulo="Aula 23" />
+      <main>
+        <ListaDeTarefas />
+      </main>
     </>
   );
 }
