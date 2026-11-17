@@ -23,8 +23,8 @@ export default function ListaDeTarefas() {
       );
     };
 
-    const adicionar = (descricao) => {
-        const nova = {id: Date.now(), descricao: descricao, concluida: false}
+    const adicionar = (descricao, prioridade) => {
+        const nova = {id: Date.now(), descricao: descricao, concluida: false, prioridade}
         setTarefas([...tarefas, nova]);
     }
 
