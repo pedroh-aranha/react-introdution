@@ -7,11 +7,12 @@ export default function Formtarefa({ aoAdicionar }) {
     const [erro, setErro] = useState("");
 
     const enviar = (event) => {
-        event.preventdefault();
+        event.preventDefault();
+        
         if (texto.trim() === "") {
             setErro("digite uma tarefa!");
             return
-        };
+        }
         aoAdicionar(texto.trim());
         setTexto("");
         setErro("");

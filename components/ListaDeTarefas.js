@@ -7,6 +7,7 @@ import Formtarefa from "./Formtarefa";
 
 export default function ListaDeTarefas() {
     const [tarefas, setTarefas] = useState(tarefasIniciais);
+    const [filtro, setFiltro] = useState("todas");
 
     const concluir = (id) => {
         setTarefas(
@@ -18,7 +19,7 @@ export default function ListaDeTarefas() {
 
     const excluir = (id) => {
       setTarefas(
-        tarefas.filter((tarefa) => tarefa.id !== tarefa.id)
+        tarefas.filter((tarefa) => tarefa.id !== id)
       );
     };
 
@@ -27,18 +28,65 @@ export default function ListaDeTarefas() {
         setTarefas([...tarefas, nova]);
     }
 
+    const totalConcluidas = tarefas.filter((tarefa) => tarefa.concluida).length;
+
+    const limparConcluidas = () => {
+      setTarefas(tarefas.filter((tarefa) => !tarefa.concluida));
+    }
+
+    const tarefasFiltradas = tarefas.filter((tarefa) =>{
+      if(filtro === "pendentes") return !tarefa.concluida;
+      if(filtro === "concluidas") return tarefa.concluida;
+      return true;
+    });
+
+    const FILTROS = [
+      {valor: "todas", texto: "todas"},
+      {valor: "pendentes", texto: "pendentes"},
+      {valor: "concluidas", texto: "concluidas"},
+    ];
 
   return (
     <section>
         <Formtarefa aoAdicionar={adicionar}/>
-    <ul>
-      {tarefas.map((tarefa) => (
-        <TarefaItem 
-        key={tarefa.id} 
-        tarefa={tarefa}
-        aoConcluir={concluir}/>
-      ))}
-    </ul>
+
+          <div className="resumo">
+            <p>
+              {totalConcluidas} de{tarefas.length} concluidas;
+            </p>
+            <div className="filtros">
+              {FILTROS.map((item) => (
+                <button key={item.valor} type="buttom" className={
+                  filtro === item.valor ? "botao-secundario-ativo" : "botao-secundario"}
+                  onClick={() => setFiltro(item.valor)} 
+                  >
+                    {item.texto}
+                  </button>
+                ))}
+            </div>
+          </div>
+
+          {tarefasFiltradas.length === 0 ? (
+            <p className="vazio">nenhuma tarefa</p>
+          ) : (
+            <ul>
+            {tarefasFiltradas.map((tarefa) => (
+              <TarefaItem 
+              key={tarefa.id} 
+              tarefa={tarefa}
+              aoConcluir={concluir}
+              aoExcluir={excluir}/>
+            ))}
+          </ul>
+          ) }
+          <div className="resumo">
+            <button type="button" className="botao-secundario"
+            onClick={limparConcluidas}
+            disabled={totalConcluidas === 0}
+            >
+              limpar concluidas
+            </button>
+            </div>
     </section>
   );
 }
