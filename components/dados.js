@@ -4,4 +4,3 @@ export const tarefasIniciais = [
     {id: 3, descricao: "Ler um livro", concluida: false},
     {id: 4, descricao: "procrastinar", concluida: true}
 ];
- 
