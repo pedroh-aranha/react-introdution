@@ -28,6 +28,13 @@ export default function ListaDeTarefas() {
         setTarefas([...tarefas, nova]);
     }
 
+    const editar = (id, descricao) => {
+      setTarefas(
+        tarefas.map((tarefa) => tarefa.id === id ? {...tarefa, descricao: descricao } : tarefa
+        ),
+      );
+    };
+
     const totalConcluidas = tarefas.filter((tarefa) => tarefa.concluida).length;
 
     const limparConcluidas = () => {
@@ -75,7 +82,8 @@ export default function ListaDeTarefas() {
               key={tarefa.id} 
               tarefa={tarefa}
               aoConcluir={concluir}
-              aoExcluir={excluir}/>
+              aoExcluir={excluir}
+              aoEditar={editar}/>
             ))}
           </ul>
           ) }
