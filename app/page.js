@@ -1,13 +1,11 @@
 import Cabecalho from "@/components/Cabecalho/Cabecalho";
-import ListaDeTarefas from "@/components/ListaDeTarefas";
+import Quadro from "@/components/Quadro/Quadro";
 
 export default function Home() {
   return (
-    <>
-      <Cabecalho titulo="To do List" subtitulo="Aula 23" />
-      <main>
-        <ListaDeTarefas />
-      </main>
-    </>
+    <main>
+      <Cabecalho titulo="Quadro de Tarefas" />
+      <Quadro />
+    </main>
   );
 }

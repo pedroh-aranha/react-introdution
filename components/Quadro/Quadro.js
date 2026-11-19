@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { tarefasIniciais } from "./dados";
-import TarefaItem from "./Tarefaitem";
-import Formtarefa from "./Formtarefa";
+import { tarefasIniciais } from "@/dados/tarefas";
+import Coluna from "./Coluna";
+import Cartao from "../Cartao/Cartao";
+import Quadro from "./quadro.module.css";
 
-export default function ListaDeTarefas() {
-    const [tarefas, setTarefas] = useState(tarefasIniciais);
-    const [filtro, setFiltro] = useState("todas");
-
+export default function QUADRO() {
+  const [tarefas, setTarefas] = useState(tarefasIniciais);
+  const [filtro, setFiltro] = useState("todas");
+  /*
     const concluir = (id) => {
         setTarefas(
             tarefas.map((tarefa) => tarefa.id === id ? {...tarefa, concluida: !tarefa.concluida}
@@ -96,5 +97,28 @@ export default function ListaDeTarefas() {
             </button>
             </div>
     </section>
-  );
+  );*/
+return (
+  <div className={Styles.quadro}>
+  {Coluna.map((coluna) => {
+      const daColuna = tarefas.filter(
+        (tarefa) => tarefa.status === coluna.status
+      );
+
+      return (
+        <Coluna
+          key={coluna.status}
+          titulo={coluna.titulo}
+          status={coluna.status}
+          quantidade={daColuna.length}
+        >
+          {daColuna.map((tarefa) => (
+            <Cartao key={tarefa.id} tarefa={tarefa} />
+          ))}
+        </Coluna>
+      );
+    })
+  }
+  </div>
+)
 }

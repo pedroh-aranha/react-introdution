@@ -1,0 +1,61 @@
+.coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    background: #E9EBE4;
+    border-top: 4px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 0.75rem;
+  }
+  
+  /* uma cor no topo para cada coluna */
+  .afazer {
+    border-top-color: var(--cor-principal);
+  }
+  
+  .fazendo {
+    border-top-color: var(--cor-info);
+  }
+  
+  .feito {
+    border-top-color: var(--cor-ok);
+  }
+  
+  .topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .titulo {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  
+  .contador {
+    min-width: 1.8rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: var(--cor-superficie);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+  
+  .lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .vazia {
+    margin: 0;
+    padding: 1rem;
+    text-align: center;
+    color: var(--cor-texto-suave);
+    border: 2px dashed var(--cor-borda);
+    border-radius: var(--raio);
+  }

@@ -1,0 +1,21 @@
+.cartao {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--cor-borda);
+    border-left: 4px solid var(--cor-borda);
+    gap: 0.5rem;
+    border-radius: var(--raio);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+    padding: 0.6rem 0.75rem;
+    background: var(--cor-superficies);
+}
+
+.alta{
+    border-left-color: var(--cor-perigo);
+}
+.media{
+    border-left-color: var(--cor-principal);
+}
+.baixa{
+    border-left-color: var(--cor-ok);
+}
